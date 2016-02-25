@@ -4,13 +4,36 @@ import java.io.BufferedReader;
 import java.io.FileNotFoundException;
 import java.io.FileReader;
 import java.io.IOException;
+import java.math.BigDecimal;
 import java.util.ArrayList;
 import java.util.List;
 
 import contract.IMarketFeed;
+import yahoofinance.Stock;
+import yahoofinance.YahooFinance;
 
 public class MarketFeed implements IMarketFeed{
 
+	String symbol;
+	
+	public MarketFeed(String symbol){
+		this.symbol = symbol;
+	}
+	
+	public CandleStick getCandleStick() throws IOException{
+		
+		Stock stock = YahooFinance.get(this.symbol);
+		BigDecimal price = stock.getQuote(true).getPrice();
+		
+		
+		return null;
+	}
+	
+	public BigDecimal getPrice() throws IOException{
+		Stock stock = YahooFinance.get(this.symbol);
+		return stock.getQuote(true).getPrice();
+	}
+	
 	@Override
 	public List<CandleStick> staticFeedAsList(String filePath) throws FileNotFoundException {
 		
