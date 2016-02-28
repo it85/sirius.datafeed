@@ -2,8 +2,10 @@ package contract;
 
 import java.io.IOException;
 
+import model.CandleStick;
+
 public interface IMarketFeed {
 	
-	double getQuote() throws IOException;
+	CandleStick getQuote() throws IOException;
 
 }
