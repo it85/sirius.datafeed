@@ -19,18 +19,6 @@ public class MarketFeed implements IMarketFeed{
 
 		this.quoteGen = new YahooQuoteGenerator(symbol);		
 	}
-		
-	public static void main(String[] args){
-		MarketFeed feed = new MarketFeed("SPY", 60);
-		
-		
-		try {
-			CandleStick d = feed.getQuote();
-			CandleStick x = d;
-		} catch (IOException e) {
-			e.printStackTrace();
-		}
-	}
 
 	@Override
 	public CandleStick getQuote() throws IOException {
